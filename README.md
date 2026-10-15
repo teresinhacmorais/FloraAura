@@ -1,0 +1,2 @@
+# FloraAura
+Primeiro projeto
