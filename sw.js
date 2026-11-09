@@ -1,4 +1,4 @@
-const CACHE_NAME = "flora-aura-v10";
+const CACHE_NAME = "flora-aura-v15";
 const APP_SHELL = [
     "./",
     "./index.html",
@@ -6,6 +6,7 @@ const APP_SHELL = [
     "./pages/offline.html",
     "./pages/sobre.html",
     "./assets/css/styles.css",
+    "./assets/css/palette.css",
     "./assets/js/app.js",
     "./assets/js/catalog.js",
     "./assets/js/auth.js",

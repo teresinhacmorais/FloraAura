@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#687B61">
-    <meta name="description" content="O teu espaço digital para conhecer e cuidar das tuas plantas.">
-    <title>FloraAura · O teu jardim digital</title>
+    <meta name="theme-color" content="#68484E">
+    <meta name="description" content="FloraAura: gestão, identificação e cuidados de plantas.">
+    <title>FloraAura</title>
     <link rel="icon" href="./assets/images/icons/icon.svg" type="image/svg+xml">
     <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/palette.css">
     <script type="module" src="./assets/js/app.js"></script>
 </head>
 <body>
@@ -25,15 +26,11 @@
         </header>
 
         <main class="app-content">
-            <p class="profile-tag">O TEU ESPAÇO BOTÂNICO</p>
-            <p class="welcome-phrase">Cultiva conhecimento, planta a planta.</p>
             <p class="status-message" id="app-status" role="status" aria-live="polite"></p>
 
             <section class="screen" id="painel" data-screen="painel">
                 <div class="hero-card">
-                    <span class="hero-eyebrow">BEM-VINDA AO TEU JARDIM</span>
-                    <h1 class="main-title">Um pouco de verde, todos os dias.</h1>
-                    <p>Organiza as tuas plantas e descobre como cuidar melhor delas.</p>
+                    <h1 class="main-title">Painel</h1>
                     <a class="btn-primary" href="#catalogo">Explorar plantas <span aria-hidden="true">→</span></a>
                     <span class="hero-plant" aria-hidden="true">🪴</span>
                 </div>
@@ -53,8 +50,7 @@
 
                 <div class="section-heading">
                     <div>
-                        <span class="section-subtitle">UM BOM COMEÇO</span>
-                        <h2>O teu jardim</h2>
+                        <h2>Resumo de plantas</h2>
                     </div>
                     <a href="#plantas">Ver plantas <span aria-hidden="true">→</span></a>
                 </div>
@@ -64,8 +60,8 @@
             <section class="screen" id="catalogo" data-screen="catalogo" hidden>
                 <div class="screen-heading">
                     <span class="section-subtitle">ENCONTRA A TUA PRÓXIMA PLANTA</span>
-                    <h1 class="main-title">Pequena selva, grandes ideias.</h1>
-                    <p>Escolhe uma planta para conhecer os seus cuidados ou adicioná-la ao teu jardim.</p>
+                    <h1 class="main-title">Catálogo</h1>
+                    <p>Seleciona uma planta para consultar os cuidados ou adicioná-la à tua lista.</p>
                 </div>
                 <label class="search-box">
                     <span aria-hidden="true">⌕</span>
@@ -78,7 +74,6 @@
             <section class="screen" id="plantas" data-screen="plantas" hidden>
                 <div class="section-heading">
                     <div>
-                        <span class="section-subtitle">O TEU CANTINHO VERDE</span>
                         <h1 class="main-title">As minhas plantas</h1>
                     </div>
                     <button class="btn-secondary" type="button" data-open-add>+ Adicionar</button>
@@ -90,7 +85,7 @@
                 <div class="screen-heading">
                     <span class="section-subtitle">CUIDAR TAMBÉM É REPARAR</span>
                     <h1 class="main-title">Registos de cuidados</h1>
-                    <p>Um pequeno histórico dos cuidados que já deste às tuas plantas.</p>
+                    <p>Histórico dos cuidados registados às tuas plantas.</p>
                 </div>
                 <div class="care-list" id="care-list"></div>
             </section>

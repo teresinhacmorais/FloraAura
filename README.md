@@ -2,6 +2,10 @@
 
 Progressive Web App em HTML, CSS e JavaScript sem dependências externas.
 
+## Versão online
+
+[Abrir FloraAura no GitHub Pages](https://teresinhacmorais.github.io/FloraAura/)
+
 ## Estrutura
 
 ```text
@@ -53,11 +57,11 @@ O service worker só funciona em HTTPS ou em `localhost`; abrir o HTML diretamen
 
 Depois de abrir a aplicação uma vez com ligação, o essencial fica disponível em cache para consultas offline.
 
-## Loja e identificação por fotografia
+## Loja, encomendas e identificação por fotografia
 
-O catálogo apresenta plantas com fotografias, preços indicativos e informações de cuidados. O carrinho e a confirmação de encomenda são uma demonstração local, sem pagamentos nem envios reais.
+O catálogo apresenta plantas com fotografias, preços indicativos e informações de cuidados. O carrinho recolhe dados de envio e permite escolher Apple Pay, MB WAY ou cartão de débito, mas a encomenda é apenas uma demonstração: não há pagamentos ou envios reais, e os dados de checkout não são guardados nem enviados.
 
-O ecrã «Identificar» permite tirar/escolher uma fotografia e consultar os cuidados de uma planta selecionada. A aplicação não reconhece automaticamente a espécie na imagem; para essa função seria necessário integrar um serviço/modelo de identificação de plantas.
+No ecrã «Identificar», a aplicação pode enviar a fotografia ao serviço de visão computacional do iNaturalist depois de o utilizador dar consentimento. São apresentadas várias sugestões, inclusive espécies fora do catálogo; as fichas de cuidados detalhadas só existem para as plantas do catálogo. Esta funcionalidade requer ligação à internet e as sugestões podem estar incorretas.
 
 A interface adapta-se a telemóveis, tablets e computadores, tanto na orientação vertical como horizontal.
 

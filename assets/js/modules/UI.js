@@ -4,6 +4,6 @@ export function updateConnectionStatus(element) {
     }
 
     element.textContent = navigator.onLine
-        ? "🌱 O teu jardim está pronto."
-        : "🌱 Estás offline. Podes continuar a consultar a aplicação.";
+        ? "Aplicação pronta."
+        : "Estás offline. Podes continuar a consultar a aplicação.";
 }

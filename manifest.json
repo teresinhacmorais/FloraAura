@@ -1,14 +1,14 @@
 {
   "id": "./",
-  "name": "FloraAura · O teu jardim digital",
+  "name": "FloraAura",
   "short_name": "FloraAura",
-  "description": "O teu espaço digital para conhecer e cuidar das tuas plantas.",
+  "description": "FloraAura: gestão, identificação e cuidados de plantas.",
   "lang": "pt-PT",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#FAF8F5",
-  "theme_color": "#2D4A3E",
+  "background_color": "#A78283",
+  "theme_color": "#68484E",
   "icons": [
     {
       "src": "./assets/images/icons/icon-192x192.png",

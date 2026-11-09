@@ -69,12 +69,35 @@ function makePlant(id, name, species, family, price, extra = {}) {
     };
 }
 
+function makeTulipGroup(id, name, species, division, price) {
+    return makePlant(id, name, species, "flower", price, {
+        photoKey: "tulipas",
+        searchTerms: `tulipa tulip divisão grupo ${division}`,
+        description: `Tulipa da divisão hortícola ${division}; os cuidados podem variar consoante a cultivar e o clima.`
+    });
+}
+
 export const catalog = [
     makePlant("rosa-encarnada", "Rosa encarnada", "Rosa × hybrida", "flower", 9.90, { photoSearch: "red rose flower" }),
     makePlant("rosa-amarela", "Rosa amarela", "Rosa × hybrida", "flower", 9.90, { photoSearch: "yellow rose flower" }),
     makePlant("rosa-rosa", "Rosa cor-de-rosa", "Rosa × hybrida", "flower", 9.90, { photoSearch: "pink rose flower" }),
     makePlant("margaridas", "Margaridas", "Leucanthemum vulgare", "flower", 5.50, { photoSearch: "daisy flower" }),
     makePlant("tulipas", "Tulipas", "Tulipa gesneriana", "flower", 7.90, { photoSearch: "tulip flower" }),
+    makeTulipGroup("tulipa-simples-precoce", "Tulipa simples precoce", "Tulipa gesneriana · divisão 1", 1, 7.90),
+    makeTulipGroup("tulipa-dobrada-precoce", "Tulipa dobrada precoce", "Tulipa gesneriana · divisão 2", 2, 8.50),
+    makeTulipGroup("tulipa-triumph", "Tulipa Triumph", "Tulipa gesneriana · divisão 3", 3, 8.90),
+    makeTulipGroup("tulipa-hibrida-darwin", "Tulipa híbrida Darwin", "Tulipa gesneriana · divisão 4", 4, 9.50),
+    makeTulipGroup("tulipa-simples-tardia", "Tulipa simples tardia", "Tulipa gesneriana · divisão 5", 5, 7.90),
+    makeTulipGroup("tulipa-flor-de-lirio", "Tulipa flor-de-lis", "Tulipa gesneriana · divisão 6", 6, 8.90),
+    makeTulipGroup("tulipa-franjada", "Tulipa franjada", "Tulipa gesneriana · divisão 7", 7, 9.50),
+    makeTulipGroup("tulipa-viridiflora", "Tulipa Viridiflora", "Tulipa gesneriana · divisão 8", 8, 8.90),
+    makeTulipGroup("tulipa-rembrandt", "Tulipa Rembrandt", "Tulipa gesneriana · divisão 9", 9, 9.50),
+    makeTulipGroup("tulipa-papagaio", "Tulipa papagaio", "Tulipa gesneriana · divisão 10", 10, 9.90),
+    makeTulipGroup("tulipa-dobrada-tardia", "Tulipa dobrada tardia", "Tulipa gesneriana · divisão 11", 11, 8.90),
+    makeTulipGroup("tulipa-kaufmanniana", "Tulipa Kaufmanniana", "Tulipa kaufmanniana · divisão 12", 12, 8.50),
+    makeTulipGroup("tulipa-fosteriana", "Tulipa Fosteriana", "Tulipa fosteriana · divisão 13", 13, 8.90),
+    makeTulipGroup("tulipa-greigii", "Tulipa Greigii", "Tulipa greigii · divisão 14", 14, 8.90),
+    makeTulipGroup("tulipas-botanicas", "Tulipas botânicas", "Tulipa spp. · divisão 15", 15, 7.50),
     makePlant("aloe-vera", "Aloe vera", "Aloe vera", "succulent", 6.50, {
         searchTerms: "aloevera babosa",
         light: "Luz abundante; adapta-se a sol suave",

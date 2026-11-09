@@ -1,0 +1,339 @@
+:root {
+    --color-primary: #68484E;
+    --color-secondary: #BB858D;
+    --color-blush-light: #A87980;
+    --color-rose-light: #C99B98;
+    --color-neutral-bg: #806166;
+    --color-white: #D9C3B9;
+    --color-dark: #3E3032;
+    --color-gray-light: #9E7779;
+    --color-gray-text: #5F484A;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 12% 10%, rgba(196, 133, 139, 0.34), transparent 30%),
+        radial-gradient(ellipse at 90% 86%, rgba(139, 151, 116, 0.4), transparent 34%),
+        #65534F;
+}
+
+.app-container {
+    background: #806166;
+    border-color: #9B7378;
+    box-shadow: 0 24px 70px rgba(48, 30, 35, 0.3);
+}
+
+.app-content {
+    background:
+        radial-gradient(ellipse at 92% 18%, rgba(169, 180, 139, 0.68), transparent 42%),
+        linear-gradient(115deg, #987579 0%, #967A73 46%, #899276 100%);
+}
+
+.app-header {
+    background: linear-gradient(160deg, #503940, #67474F 58%, #765158);
+}
+
+.app-header .header-brand-row .logo-area,
+.app-header .account-actions > span {
+    color: #E8D6C9;
+}
+
+.app-header .account-avatar-link {
+    background: #C98E91;
+}
+
+.nav-links a {
+    background: rgba(232, 214, 201, 0.1);
+    color: #E7D7CA;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #D2A6A1;
+    color: #49363A;
+}
+
+.app-content .main-title,
+.section-heading h1,
+.section-heading h2 {
+    color: #F0DFCF;
+}
+
+.section-subtitle,
+.hero-card .hero-eyebrow,
+.plant-category {
+    color: #F0CC91;
+}
+
+.hero-card {
+    background:
+        radial-gradient(circle at 87% 45%, rgba(239, 193, 122, 0.46) 0 7%, transparent 7.5%),
+        radial-gradient(circle at 89% 46%, transparent 0 19%, rgba(240, 218, 198, 0.18) 19.2% 19.8%, transparent 20%),
+        linear-gradient(118deg, #563B43 0%, #85565E 48%, #78805B 100%);
+}
+
+.stat-card,
+.cart-item,
+.catalog-card,
+.my-plant-card,
+.care-entry,
+.profile-card,
+.care-result-card,
+.identification-results li,
+.loader-box {
+    border-color: #A77D7D;
+    background: linear-gradient(140deg, #D5B8AE, #C5A09D);
+    box-shadow: 0 9px 22px rgba(66, 42, 47, 0.13);
+}
+
+.stat-card:nth-child(even),
+.cart-item:nth-child(even),
+.catalog-card:nth-child(even) {
+    background: linear-gradient(140deg, #C5C9A6, #AEB995);
+}
+
+.stat-card:nth-child(even) strong,
+.stat-card:nth-child(even) > span:last-child {
+    color: #354431;
+}
+
+.stat-icon,
+.care-entry-icon,
+.plant-avatar {
+    background: #99A47D;
+    color: #354431;
+}
+
+.stat-card:nth-child(even) .stat-icon {
+    background: #D1A19E;
+}
+
+.compact-empty {
+    background: linear-gradient(135deg, #BFC5A0, #AEB895);
+}
+
+.profile-details > div,
+.profile-photo-wrap,
+.profile-photo-fallback,
+.plant-dialog,
+.empty-state {
+    background: #C3A09A;
+}
+
+.profile-photo-wrap {
+    border-color: #AD8582;
+}
+
+.profile-details > div:nth-child(even),
+.empty-state:nth-child(even) {
+    background: #C5C8A6;
+}
+
+.stat-card strong,
+.stat-card > span:last-child,
+.cart-item h2,
+.cart-item-info > p,
+.my-plant-details h3,
+.my-plant-details p,
+.plant-meta,
+.care-entry h2,
+.care-entry p,
+.care-entry time,
+.profile-photo-actions h2,
+.profile-photo-actions p,
+.profile-photo-actions small,
+.care-details dd,
+.care-description {
+    color: #433235;
+}
+
+.catalog-card h2 {
+    color: #49363A;
+}
+
+.product-price,
+.cart-item > strong {
+    color: #794F43;
+}
+
+.profile-details dd {
+    color: #563E43;
+}
+
+.identify-form,
+.cart-summary {
+    border-color: #A77D7D;
+    background: linear-gradient(135deg, #80636A, #727C61);
+}
+
+.identify-form > label:not(.photo-picker),
+.identify-consent,
+.checkout-form label,
+.cart-summary > p:first-child,
+.cart-summary strong,
+.checkout-form h2 {
+    color: #F1DFCE;
+}
+
+.identify-disclaimer,
+.cart-disclaimer {
+    color: #E6D0C5;
+}
+
+.photo-picker {
+    border-color: #9BA77E;
+    background: linear-gradient(135deg, #929B78, #A87980);
+    color: #F5E4D7;
+}
+
+.identify-loading {
+    background: #AE7E83;
+    color: #FFF0DF;
+}
+
+.identification-results > h2 {
+    color: #F0DFCF;
+}
+
+.identification-scientific {
+    color: #684E52;
+}
+
+.identification-confidence {
+    color: #68484E;
+}
+
+.search-box,
+.auth-form input,
+.checkout-form input,
+.checkout-form select,
+.identify-form select,
+.plant-dialog input,
+.plant-dialog select {
+    border-color: #929B78;
+    background: #C8C9AA;
+    color: #3E3032;
+}
+
+.search-box input::placeholder,
+.auth-form input::placeholder,
+.checkout-form input::placeholder {
+    color: #70575A;
+}
+
+.search-box:focus-within,
+.auth-form input:focus,
+.checkout-form input:focus,
+.checkout-form select:focus,
+.identify-form select:focus,
+.plant-dialog input:focus,
+.plant-dialog select:focus {
+    border-color: #D59A9E;
+    outline-color: rgba(213, 154, 158, 0.3);
+}
+
+.auth-container {
+    background:
+        radial-gradient(circle at 85% 12%, rgba(213, 154, 158, 0.34), transparent 25%),
+        linear-gradient(155deg, #684A50, #987279 55%, #776052);
+}
+
+.auth-content {
+    border-color: #A77D7D;
+    background: linear-gradient(150deg, #946C73, #7D5B64);
+    box-shadow: 0 18px 44px rgba(48, 30, 35, 0.24);
+}
+
+.auth-content > .main-title {
+    color: #F0DFCF;
+}
+
+.auth-intro,
+.auth-note {
+    color: #E8D5C9;
+}
+
+.auth-form label {
+    color: #F0DFCF;
+}
+
+.auth-tabs {
+    background: #64474F;
+}
+
+.auth-tab {
+    color: #E4D0C6;
+}
+
+.auth-tab.active {
+    background: #D1A19E;
+    color: #49363A;
+}
+
+.btn-secondary,
+.btn-garden,
+.reminder-toggle {
+    border-color: #9BA77E;
+    background: linear-gradient(105deg, #8E9A75, #A87980);
+    color: #FFF0E1;
+}
+
+.btn-card,
+.btn-primary {
+    background: linear-gradient(105deg, #67454E 0%, #985F6B 62%, #78805B 100%);
+    color: #F6E8D7;
+}
+
+.btn-card:hover,
+.btn-primary:hover {
+    background: linear-gradient(105deg, #563940 0%, #814C58 62%, #68734E 100%);
+}
+
+.favorite-button {
+    background: rgba(224, 187, 157, 0.96);
+    color: #593C3C;
+}
+
+.favorite-button.is-favorite {
+    background: #B86C72;
+    color: #FFF0E1;
+}
+
+.app-footer {
+    border-color: #9B7378;
+    background: linear-gradient(90deg, #725159 0%, #806D62 48%, #78816A 100%);
+    color: #EBDACE;
+}
+
+.status-message,
+.auth-status {
+    border-color: #A77D7D;
+    background: #A4777E;
+    color: #FFF0E1;
+}
+
+.auth-status.is-error,
+.status-message.is-error {
+    background: #8A5E52;
+    color: #F5E5D2;
+}
+
+@media (min-width: 901px) {
+    .app-header {
+        background:
+            radial-gradient(circle at 0 100%, rgba(163, 115, 116, 0.26), transparent 40%),
+            linear-gradient(165deg, #503940, #3F3037);
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+        background: #D2A6A1;
+        color: #49363A;
+    }
+}
+
+@media (max-width: 900px) {
+    .app-header {
+        background: linear-gradient(105deg, #503940, #80565F);
+    }
+}

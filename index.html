@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2D4A3E">
-    <meta name="description" content="O teu espaço digital para conhecer e cuidar das tuas plantas.">
-    <title>FloraAura · O teu jardim digital</title>
+    <meta name="theme-color" content="#68484E">
+    <meta name="description" content="FloraAura: gestão, identificação e cuidados de plantas.">
+    <title>FloraAura</title>
     <link rel="icon" href="./assets/images/icons/icon-192x192.png" type="image/png">
     <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/palette.css">
     <script type="module" src="./assets/js/app.js"></script>
 </head>
 <body>
@@ -17,8 +18,7 @@
             <a href="./index.html" class="logo-area auth-logo">
                 <img src="./assets/images/flora-aura-logo.png" alt="FloraAura">
             </a>
-            <p class="section-subtitle">O TEU ESPAÇO BOTÂNICO</p>
-            <h1 class="main-title">Cultiva o teu jardim.</h1>
+            <h1 class="main-title">Acesso à conta</h1>
             <p class="auth-intro">Entra na tua conta para acompanhar as tuas plantas e os seus cuidados.</p>
 
             <div class="auth-tabs" role="tablist" aria-label="Acesso à conta">
@@ -51,7 +51,7 @@
 
             <p class="auth-note">A conta e os dados ficam guardados apenas neste dispositivo. Para dados reais ou sincronização entre dispositivos, é necessário um servidor seguro.</p>
         </div>
-        <footer class="app-footer">FloraAura · O teu jardim digital</footer>
+        <footer class="app-footer">FloraAura</footer>
     </main>
 
     <div class="app-container" id="application-shell" hidden>
@@ -72,7 +72,7 @@
             </div>
             <nav class="nav-links" aria-label="Navegação principal">
                 <a href="#painel" class="active" aria-current="page">🏠 Painel</a>
-                <a href="#catalogo">🪷 Loja</a>
+                <a href="#catalogo">🪷 Catalogo</a>
                 <a href="#carrinho">🛒 Carrinho <span class="cart-count" id="cart-count">0</span></a>
                 <a href="#identificar">📷 Identificar</a>
                 <a href="#favoritos">♡ Favoritos <span class="cart-count" id="favorites-count">0</span></a>
@@ -85,15 +85,11 @@
         </header>
 
         <main class="app-content">
-            <p class="profile-tag">O TEU ESPAÇO BOTÂNICO</p>
-            <p class="welcome-phrase">Cultiva conhecimento, planta a planta.</p>
             <p class="status-message" id="app-status" role="status" aria-live="polite"></p>
 
             <section class="screen" id="painel" data-screen="painel">
                 <div class="hero-card">
-                    <span class="hero-eyebrow">BEM-VINDA AO TEU JARDIM</span>
-                    <h1 class="main-title">O teu jardim, ao teu ritmo.</h1>
-                    <p>Organiza as tuas plantas e descobre como cuidar melhor delas.</p>
+                    <h1 class="main-title">Painel</h1>
                     <a class="btn-primary" href="#catalogo">Explorar plantas <span aria-hidden="true">→</span></a>
                     <span class="hero-plant" aria-hidden="true">🪴</span>
                 </div>
@@ -113,8 +109,7 @@
 
                 <div class="section-heading">
                     <div>
-                        <span class="section-subtitle">UM BOM COMEÇO</span>
-                        <h2>O teu jardim</h2>
+                        <h2>Resumo de plantas</h2>
                     </div>
                     <a href="#plantas">Ver plantas <span aria-hidden="true">→</span></a>
                 </div>
@@ -124,8 +119,7 @@
             <section class="screen" id="catalogo" data-screen="catalogo" hidden>
                 <div class="screen-heading">
                     <span class="section-subtitle">PLANTAS PARA A TUA CASA E JARDIM</span>
-                    <h1 class="main-title">Loja FloraAura</h1>
-                    <p>Explora plantas, consulta os cuidados e os preços indicativos em euros, e escolhe as tuas favoritas.</p>
+                    <h1 class="main-title">Catalogo</h1>
                 </div>
                 <label class="search-box">
                     <span aria-hidden="true">⌕</span>
@@ -140,13 +134,44 @@
                 <div class="screen-heading">
                     <span class="section-subtitle">A TUA SELEÇÃO</span>
                     <h1 class="main-title">Carrinho de compras</h1>
-                    <p>Revê as plantas escolhidas antes de confirmar a encomenda de demonstração.</p>
                 </div>
                 <div class="cart-list" id="cart-list"></div>
                 <div class="cart-summary" id="cart-summary" hidden>
                     <p>Total <strong id="cart-total">0,00 €</strong></p>
-                    <button class="btn-primary" id="checkout-button" type="button">Confirmar encomenda</button>
-                    <p class="cart-disclaimer">Demonstração: não há pagamento nem envio real.</p>
+                    <form class="checkout-form" id="checkout-form">
+                        <h2>Envio e pagamento</h2>
+                        <label for="checkout-name">Nome completo</label>
+                        <input id="checkout-name" name="name" type="text" autocomplete="name" required>
+                        <label for="checkout-email">Email</label>
+                        <input id="checkout-email" name="email" type="email" autocomplete="email" required>
+                        <label for="checkout-phone">N.º de telefone</label>
+                        <input id="checkout-phone" name="phone" type="tel" autocomplete="tel" required>
+                        <label for="checkout-address">Morada</label>
+                        <input id="checkout-address" name="address" type="text" autocomplete="street-address" required>
+                        <div class="checkout-address-row">
+                            <div>
+                                <label for="checkout-postal-code">Código postal</label>
+                                <input id="checkout-postal-code" name="postalCode" type="text" autocomplete="postal-code" required>
+                            </div>
+                            <div>
+                                <label for="checkout-locality">Localidade</label>
+                                <input id="checkout-locality" name="locality" type="text" autocomplete="address-level2" required>
+                            </div>
+                        </div>
+                        <label for="payment-method">Método de pagamento</label>
+                        <select id="payment-method" name="paymentMethod" required>
+                            <option value="">Escolhe um método</option>
+                            <option value="apple-pay">Apple Pay</option>
+                            <option value="mb-way">MB WAY</option>
+                            <option value="debit-card">Cartão de débito</option>
+                        </select>
+                        <div id="mbway-phone-field" hidden>
+                            <label for="mbway-phone">N.º de telefone associado ao MB WAY</label>
+                            <input id="mbway-phone" name="mbwayPhone" type="tel" autocomplete="tel">
+                        </div>
+                        <p class="cart-disclaimer">Demonstração: não há pagamento nem envio real. Os dados preenchidos não são guardados nem enviados.</p>
+                        <button class="btn-primary" type="submit">Confirmar encomenda</button>
+                    </form>
                 </div>
             </section>
 
@@ -154,7 +179,7 @@
                 <div class="screen-heading">
                     <span class="section-subtitle">CUIDADOS PARA A TUA PLANTA</span>
                     <h1 class="main-title">Fotografar e consultar</h1>
-                    <p>Tira uma fotografia ou escolhe uma imagem e seleciona a espécie para consultar a ficha de cuidados.</p>
+                    <p>Tira uma fotografia e recebe sugestões de identificação, incluindo espécies que não constam no catálogo.</p>
                 </div>
                 <form class="identify-form" id="identify-form">
                     <label class="photo-picker" for="plant-photo">
@@ -164,12 +189,12 @@
                     </label>
                     <input class="visually-hidden" id="plant-photo" type="file" accept="image/*" capture="environment">
                     <img id="photo-preview" class="photo-preview" alt="Pré-visualização da fotografia da planta" hidden>
-                    <p class="identify-disclaimer">A fotografia é apresentada neste dispositivo e não identifica automaticamente a espécie. Escolhe a planta que mais se parece com a fotografia para ver os cuidados disponíveis.</p>
-                    <label for="identify-plant">Espécie da planta</label>
-                    <select id="identify-plant" required>
-                        <option value="">Escolhe uma planta do catálogo</option>
-                    </select>
-                    <button class="btn-primary" type="submit">Ver identificação e cuidados</button>
+                    <p class="identify-disclaimer">A identificação é feita pelo iNaturalist. A fotografia selecionada só será enviada para esse serviço quando aceitares abaixo. As sugestões podem não estar corretas.</p>
+                    <label class="identify-consent" for="identify-consent">
+                        <input id="identify-consent" type="checkbox" required>
+                        <span>Concordo em enviar esta fotografia ao iNaturalist para tentar identificar a planta.</span>
+                    </label>
+                    <button class="btn-primary" id="identify-button" type="submit">Identificar planta</button>
                 </form>
                 <div class="plant-care-result" id="plant-care-result" aria-live="polite"></div>
             </section>
@@ -178,7 +203,7 @@
                 <div class="screen-heading">
                     <span class="section-subtitle">AS TUAS ESCOLHAS</span>
                     <h1 class="main-title">Plantas favoritas</h1>
-                    <p>Guarda aqui as plantas que queres encontrar facilmente.</p>
+                    <p>Lista das plantas marcadas como favoritas.</p>
                 </div>
                 <div class="catalog-grid" id="favorites-grid"></div>
             </section>
@@ -186,7 +211,6 @@
             <section class="screen" id="plantas" data-screen="plantas" hidden>
                 <div class="section-heading">
                     <div>
-                        <span class="section-subtitle">O TEU CANTINHO VERDE</span>
                         <h1 class="main-title">As minhas plantas</h1>
                     </div>
                     <button class="btn-secondary" type="button" data-open-add>+ Adicionar</button>
@@ -198,7 +222,6 @@
                 <div class="screen-heading">
                     <span class="section-subtitle">UM CUIDADO DE CADA VEZ</span>
                     <h1 class="main-title">Lembretes de rega</h1>
-                    <p>Os lembretes aparecem quando abres a aplicação. Notificações com a aplicação fechada exigem um serviço de notificações.</p>
                 </div>
                 <div class="plant-list" id="reminder-list"></div>
             </section>
@@ -207,7 +230,7 @@
                 <div class="screen-heading">
                     <span class="section-subtitle">CUIDAR TAMBÉM É REPARAR</span>
                     <h1 class="main-title">Registos de cuidados</h1>
-                    <p>Um pequeno histórico dos cuidados que já deste às tuas plantas.</p>
+                    <p>Histórico dos cuidados registados às tuas plantas.</p>
                 </div>
                 <div class="care-list" id="care-list"></div>
             </section>
@@ -216,7 +239,7 @@
                 <div class="screen-heading">
                     <span class="section-subtitle">A TUA CONTA FLORAAURA</span>
                     <h1 class="main-title">O meu perfil</h1>
-                    <p>Personaliza o teu espaço e mantém os teus dados à mão.</p>
+                    <p>Consulta e atualiza os dados da tua conta.</p>
                 </div>
                 <article class="profile-card">
                     <div class="profile-photo-wrap">

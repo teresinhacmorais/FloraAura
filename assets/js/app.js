@@ -31,7 +31,6 @@ const loginForm = document.querySelector("#login-form");
 const registerForm = document.querySelector("#register-form");
 const cartList = document.querySelector("#cart-list");
 const cartSummary = document.querySelector("#cart-summary");
-const identifySelect = document.querySelector("#identify-plant");
 const photoPreview = document.querySelector("#photo-preview");
 const profilePhotoInput = document.querySelector("#profile-photo-input");
 
@@ -78,6 +77,8 @@ async function enterApplication(account) {
     currentAccount = account;
     document.querySelector("#account-name").textContent = account.name;
     renderProfile();
+    document.querySelector("#checkout-name").value = account.name;
+    document.querySelector("#checkout-email").value = account.email;
     const savedCart = await getCart(account.email);
     cartItems = savedCart?.items || [];
     const savedFavorites = await getFavorites(account.email);
@@ -229,7 +230,8 @@ function navigate() {
 }
 
 function plantPhotoMarkup(plant, className = "catalog-photo") {
-    const photo = plantPhotos.get(plant.id);
+    const photoKey = plant.photoKey || plant.id;
+    const photo = plantPhotos.get(photoKey);
     if (!photo) {
         return `<div class="photo-unavailable" role="img" aria-label="Fotografia indisponível: ${escapeHtml(plant.name)}">Fotografia indisponível</div>`;
     }
@@ -238,9 +240,12 @@ function plantPhotoMarkup(plant, className = "catalog-photo") {
         ? ` · ${photo.credit}`
         : "";
     const license = photo.license ? ` · ${photo.license}` : "";
+    const photoAlt = photoKey === plant.id
+        ? `Fotografia real de ${plant.name}`
+        : `Fotografia ilustrativa de uma tulipa para ${plant.name}`;
 
     return `
-        <img class="${className}" src="${escapeHtml(photo.src)}" alt="Fotografia real de ${escapeHtml(plant.name)}"
+        <img class="${className}" src="${escapeHtml(photo.src)}" alt="${escapeHtml(photoAlt)}"
             loading="lazy" decoding="async">
         <a class="photo-credit" href="${escapeHtml(photo.source)}" target="_blank" rel="noreferrer">
             Fotografia: ${escapeHtml(photo.title)}${escapeHtml(photographer)} · Wikimedia Commons${escapeHtml(license)}
@@ -353,16 +358,10 @@ async function loadPlantPhotos() {
         throw new Error("O ficheiro das fotografias tem um formato inválido.");
     }
     plantPhotos = new Map(photos.map((photo) => [photo.id, photo]));
-    const missingPhotos = catalog.filter((plant) => !plantPhotos.has(plant.id));
+    const missingPhotos = catalog.filter((plant) => !plantPhotos.has(plant.photoKey || plant.id));
     if (missingPhotos.length > 0) {
         console.error("Faltam fotografias para algumas plantas.", missingPhotos.map((plant) => plant.name));
     }
-}
-
-function renderIdentifyOptions() {
-    identifySelect.insertAdjacentHTML("beforeend", catalog.map((plant) => (
-        `<option value="${escapeHtml(plant.id)}">${escapeHtml(plant.name)} · ${escapeHtml(plant.species)}</option>`
-    )).join(""));
 }
 
 function renderCart() {
@@ -437,7 +436,7 @@ function plantCard(plant) {
             <div class="plant-avatar" aria-hidden="true">${escapeHtml(plant.emoji || "🪴")}</div>
             <div class="my-plant-details">
                 <h3>${escapeHtml(plant.name)}</h3>
-                <p>${escapeHtml(plant.species || plant.location || "A crescer no teu jardim")}</p>
+                <p>${escapeHtml(plant.species || plant.location || "Planta registada")}</p>
                 <span class="plant-meta">${escapeHtml(plant.location || "Meu jardim")} · ${escapeHtml(wateredText)}</span>
                 <span class="plant-reminder">${escapeHtml(reminderText)}</span>
             </div>
@@ -462,7 +461,7 @@ function getNextWateringDate(plant) {
 function renderPlants() {
     const plantsMarkup = plants.length
         ? plants.map(plantCard).join("")
-        : '<div class="empty-state"><span aria-hidden="true">🪴</span><h2>O teu jardim começa aqui</h2><p>Adiciona a primeira planta para começares a acompanhar os seus cuidados.</p><a class="btn-secondary" href="#catalogo">Explorar catálogo</a></div>';
+        : '<div class="empty-state"><span aria-hidden="true">🪴</span><h2>Ainda não tens plantas</h2><p>Adiciona uma planta para acompanhar os respetivos cuidados.</p><a class="btn-secondary" href="#catalogo">Abrir catálogo</a></div>';
 
     document.querySelector("#my-plants").innerHTML = plantsMarkup;
     document.querySelector("#dashboard-plants").innerHTML = plants.length
@@ -530,10 +529,13 @@ function openAddDialog(name = "", species = "") {
 
 window.addEventListener("hashchange", navigate);
 navigate();
-renderIdentifyOptions();
 catalogSearch.addEventListener("input", () => renderCatalog(catalogSearch.value));
 document.querySelector("#register-birthdate").max = todayAsDateInputValue();
 document.querySelector("#plant-photo").required = true;
+
+const identifyForm = document.querySelector("#identify-form");
+const identifyButton = document.querySelector("#identify-button");
+const identifyResult = document.querySelector("#plant-care-result");
 
 document.querySelector("#plant-photo").addEventListener("change", (event) => {
     const [file] = event.target.files;
@@ -553,30 +555,89 @@ document.querySelector("#plant-photo").addEventListener("change", (event) => {
         showStatus("Escolhe um ficheiro de imagem válido.", true);
         return;
     }
+    if (file.size > 10 * 1024 * 1024) {
+        event.target.value = "";
+        showStatus("A fotografia tem de ter menos de 10 MB.", true);
+        return;
+    }
 
     photoPreviewUrl = URL.createObjectURL(file);
     photoPreview.src = photoPreviewUrl;
     photoPreview.hidden = false;
+    identifyResult.replaceChildren();
 });
 
-document.querySelector("#identify-form").addEventListener("submit", (event) => {
+identifyForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const plant = getPlantById(identifySelect.value);
-    if (!plant) {
-        showStatus("Escolhe uma planta para consultar os cuidados.", true);
+    const [image] = document.querySelector("#plant-photo").files;
+    if (!image) {
+        showStatus("Escolhe uma fotografia da planta.", true);
         return;
     }
 
-    document.querySelector("#plant-care-result").innerHTML = `
-        <article class="care-result-card">
-            <div class="catalog-photo-wrap">${plantPhotoMarkup(plant, "care-result-photo")}</div>
-            <div class="catalog-card-content">
-                <span class="plant-category">${escapeHtml(plant.category)}</span>
-                <h2>${escapeHtml(plant.name)}</h2>
-                ${careDetailsMarkup(plant)}
-            </div>
-        </article>
-    `;
+    identifyButton.disabled = true;
+    identifyButton.textContent = "A identificar…";
+    identifyResult.innerHTML = '<p class="identify-loading" role="status">A analisar a fotografia. Isto pode demorar alguns segundos.</p>';
+    try {
+        const requestBody = new FormData();
+        requestBody.append("image", image);
+        requestBody.append("locale", "pt");
+        const response = await fetch("https://api.inaturalist.org/v1/computervision/score_image", {
+            method: "POST",
+            body: requestBody
+        });
+        if (!response.ok) {
+            throw new Error(`O serviço de identificação respondeu com o erro ${response.status}.`);
+        }
+
+        const result = await response.json();
+        const suggestions = Array.isArray(result.results)
+            ? result.results.filter((suggestion) => suggestion?.taxon).slice(0, 5)
+            : [];
+        if (suggestions.length === 0) {
+            identifyResult.innerHTML = '<p class="empty-state">Não foi possível sugerir uma espécie para esta fotografia. Tenta outra imagem, com a planta bem visível.</p>';
+            return;
+        }
+
+        const topTaxon = suggestions[0].taxon;
+        const matchedPlant = catalog.find((plant) => (
+            normalizeSearch(plant.species) === normalizeSearch(topTaxon?.name || "")
+            || normalizeSearch(plant.name) === normalizeSearch(topTaxon?.preferred_common_name || "")
+        ));
+        identifyResult.innerHTML = `
+            <section class="identification-results" aria-live="polite">
+                <h2>Sugestões de identificação</h2>
+                <ol>
+                    ${suggestions.map(({ taxon, score }) => {
+                        const commonName = taxon?.preferred_common_name;
+                        const scientificName = taxon?.name || "Espécie não identificada";
+                        const confidence = Number.isFinite(score) ? `${Math.round(score * 100)}%` : "";
+                        return `<li><strong>${escapeHtml(commonName || scientificName)}</strong>
+                            ${commonName ? `<span class="identification-scientific">${escapeHtml(scientificName)}</span>` : ""}
+                            ${confidence ? `<span class="identification-confidence">${confidence}</span>` : ""}
+                        </li>`;
+                    }).join("")}
+                </ol>
+                ${matchedPlant ? `
+                    <article class="care-result-card">
+                        <div class="catalog-photo-wrap">${plantPhotoMarkup(matchedPlant, "care-result-photo")}</div>
+                        <div class="catalog-card-content">
+                            <span class="plant-category">${escapeHtml(matchedPlant.category)}</span>
+                            <h2>Cuidados: ${escapeHtml(matchedPlant.name)}</h2>
+                            ${careDetailsMarkup(matchedPlant)}
+                        </div>
+                    </article>
+                ` : `<p class="identify-disclaimer">Esta planta não está no catálogo. As sugestões identificam espécies fora do catálogo, mas ainda não temos uma ficha de cuidados para elas.</p>`}
+            </section>
+        `;
+        bindPhotoFallbacks(identifyResult);
+    } catch (error) {
+        console.error("Não foi possível identificar a planta.", error);
+        identifyResult.innerHTML = '<p class="empty-state">Não foi possível contactar o serviço de identificação. Verifica a ligação à internet e tenta novamente.</p>';
+    } finally {
+        identifyButton.disabled = false;
+        identifyButton.textContent = "Identificar planta";
+    }
 });
 
 window.addEventListener("beforeunload", () => {
@@ -828,7 +889,7 @@ form.addEventListener("submit", async (event) => {
         await refreshData();
         dialog.close();
         window.location.hash = "#plantas";
-        showStatus(`${plant.name} foi adicionada ao teu jardim.`);
+        showStatus(`${plant.name} foi adicionada à tua lista.`);
     } catch (error) {
         console.error("Não foi possível adicionar a planta.", error);
         showStatus("Não foi possível guardar a planta neste dispositivo. Tenta novamente.", true);
@@ -869,15 +930,31 @@ async function initializeApp() {
     }
 }
 
-document.querySelector("#checkout-button").addEventListener("click", async () => {
+const checkoutForm = document.querySelector("#checkout-form");
+const paymentMethod = document.querySelector("#payment-method");
+const mbwayPhoneField = document.querySelector("#mbway-phone-field");
+const mbwayPhoneInput = document.querySelector("#mbway-phone");
+
+paymentMethod.addEventListener("change", () => {
+    const isMbway = paymentMethod.value === "mb-way";
+    mbwayPhoneField.hidden = !isMbway;
+    mbwayPhoneInput.required = isMbway;
+});
+
+checkoutForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
     if (cartItems.length === 0) {
         return;
     }
-    cartItems = [];
+
     try {
-        await saveCart(currentAccount.email, cartItems);
+        await saveCart(currentAccount.email, []);
+        cartItems = [];
         renderCart();
-        showStatus("Encomenda de demonstração confirmada. Não foi efetuado qualquer pagamento ou envio.");
+        checkoutForm.reset();
+        mbwayPhoneField.hidden = true;
+        mbwayPhoneInput.required = false;
+        showStatus("Encomenda de demonstração confirmada. Não foram efetuados pagamentos nem envios, e os dados não foram guardados.");
     } catch (error) {
         console.error("Não foi possível confirmar a encomenda de demonstração.", error);
         showStatus("Não foi possível guardar a encomenda. Tenta novamente.", true);
