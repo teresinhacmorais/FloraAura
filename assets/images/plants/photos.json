@@ -1,0 +1,357 @@
+﻿{
+    "value":  [
+                  {
+                      "id":  "alecrim",
+                      "src":  "./assets/images/plants/alecrim.JPG",
+                      "title":  "Rosemary",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Rosemary"
+                  },
+                  {
+                      "id":  "aloe-vera",
+                      "src":  "./assets/images/plants/aloe-vera.jpg",
+                      "title":  "Aloe vera",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Aloe_vera"
+                  },
+                  {
+                      "id":  "anturio",
+                      "src":  "./assets/images/plants/anturio.jpg",
+                      "title":  "Anthurium andraeanum",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Anthurium_andraeanum"
+                  },
+                  {
+                      "id":  "anturio-rosa",
+                      "src":  "./assets/images/plants/anturio-rosa.jpg",
+                      "title":  "Anthurium andraeanum",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Anthurium_andraeanum"
+                  },
+                  {
+                      "id":  "astromelia",
+                      "src":  "./assets/images/plants/astromelia.jpg",
+                      "title":  "Alstroemeria",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Alstroemeria"
+                  },
+                  {
+                      "id":  "begonia",
+                      "src":  "./assets/images/plants/begonia.jpg",
+                      "title":  "Begonia",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Begonia"
+                  },
+                  {
+                      "id":  "bromelia",
+                      "src":  "./assets/images/plants/bromelia.JPG",
+                      "title":  "Bromeliaceae",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Bromeliaceae"
+                  },
+                  {
+                      "id":  "buganvilia",
+                      "src":  "./assets/images/plants/buganvilia.jpg",
+                      "title":  "Bougainvillea",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Bougainvillea"
+                  },
+                  {
+                      "id":  "calathea",
+                      "src":  "./assets/images/plants/calathea.jpg",
+                      "title":  "Calathea",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Calathea"
+                  },
+                  {
+                      "id":  "cato-de-barril",
+                      "src":  "./assets/images/plants/cato-de-barril.jpg",
+                      "title":  "Kroenleinia grusonii",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Kroenleinia_grusonii"
+                  },
+                  {
+                      "id":  "ciclame",
+                      "src":  "./assets/images/plants/ciclame.JPG",
+                      "title":  "Cyclamen persicum",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Cyclamen_persicum"
+                  },
+                  {
+                      "id":  "copo-de-leite",
+                      "src":  "./assets/images/plants/copo-de-leite.jpg",
+                      "title":  "Zantedeschia aethiopica",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Zantedeschia_aethiopica"
+                  },
+                  {
+                      "id":  "costela-de-adao",
+                      "src":  "./assets/images/plants/costela-de-adao.jpg",
+                      "title":  "Monstera deliciosa",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Monstera_deliciosa"
+                  },
+                  {
+                      "id":  "cravo",
+                      "src":  "./assets/images/plants/cravo.jpg",
+                      "title":  "Dianthus caryophyllus",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Dianthus_caryophyllus"
+                  },
+                  {
+                      "id":  "crisantemo",
+                      "src":  "./assets/images/plants/crisantemo.png",
+                      "title":  "Chrysanthemum",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Chrysanthemum"
+                  },
+                  {
+                      "id":  "dalia",
+                      "src":  "./assets/images/plants/dalia.jpg",
+                      "title":  "Dahlia",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Dahlia"
+                  },
+                  {
+                      "id":  "delfinio",
+                      "src":  "./assets/images/plants/delfinio.png",
+                      "title":  "Delphinium",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Delphinium"
+                  },
+                  {
+                      "id":  "echeveria",
+                      "src":  "./assets/images/plants/echeveria.jpg",
+                      "title":  "Echeveria",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Echeveria"
+                  },
+                  {
+                      "id":  "gardenia",
+                      "src":  "./assets/images/plants/gardenia.jpg",
+                      "title":  "Gardenia jasminoides",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Gardenia_jasminoides"
+                  },
+                  {
+                      "id":  "geranio",
+                      "src":  "./assets/images/plants/geranio.JPG",
+                      "title":  "Pelargonium",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Pelargonium"
+                  },
+                  {
+                      "id":  "gerbera",
+                      "src":  "./assets/images/plants/gerbera.jpg",
+                      "title":  "Gerbera jamesonii",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Gerbera_jamesonii"
+                  },
+                  {
+                      "id":  "girassol",
+                      "src":  "./assets/images/plants/girassol.jpg",
+                      "title":  "Common sunflower",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Common_sunflower"
+                  },
+                  {
+                      "id":  "hibisco",
+                      "src":  "./assets/images/plants/hibisco.jpg",
+                      "title":  "Hibiscus rosa-sinensis",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Hibiscus_rosa-sinensis"
+                  },
+                  {
+                      "id":  "hortela",
+                      "src":  "./assets/images/plants/hortela.jpg",
+                      "title":  "Spearmint",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Spearmint"
+                  },
+                  {
+                      "id":  "hortensia",
+                      "src":  "./assets/images/plants/hortensia.jpg",
+                      "title":  "Hydrangea macrophylla",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Hydrangea_macrophylla"
+                  },
+                  {
+                      "id":  "iris",
+                      "src":  "./assets/images/plants/iris.jpg",
+                      "title":  "Iris germanica",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Iris_germanica"
+                  },
+                  {
+                      "id":  "jiboia",
+                      "src":  "./assets/images/plants/jiboia.jpg",
+                      "title":  "Epipremnum aureum",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Epipremnum_aureum"
+                  },
+                  {
+                      "id":  "kalanchoe",
+                      "src":  "./assets/images/plants/kalanchoe.jpg",
+                      "title":  "Kalanchoe blossfeldiana",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Kalanchoe_blossfeldiana"
+                  },
+                  {
+                      "id":  "lavanda",
+                      "src":  "./assets/images/plants/lavanda.jpg",
+                      "title":  "Lavandula",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Lavandula"
+                  },
+                  {
+                      "id":  "lirio-da-paz",
+                      "src":  "./assets/images/plants/lirio-da-paz.jpg",
+                      "title":  "Spathiphyllum wallisii",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Spathiphyllum_wallisii"
+                  },
+                  {
+                      "id":  "lisianthus",
+                      "src":  "./assets/images/plants/lisianthus.jpg",
+                      "title":  "Eustoma russellianum",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Eustoma_russellianum"
+                  },
+                  {
+                      "id":  "manjericao",
+                      "src":  "./assets/images/plants/manjericao.jpg",
+                      "title":  "Basil",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Basil"
+                  },
+                  {
+                      "id":  "margaridas",
+                      "src":  "./assets/images/plants/margaridas.jpg",
+                      "title":  "Bellis perennis",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Bellis_perennis"
+                  },
+                  {
+                      "id":  "medinila",
+                      "src":  "./assets/images/plants/medinila.jpg",
+                      "title":  "Medinilla magnifica",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Medinilla_magnifica"
+                  },
+                  {
+                      "id":  "orquidea",
+                      "src":  "./assets/images/plants/orquidea.jpg",
+                      "title":  "Phalaenopsis",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Phalaenopsis"
+                  },
+                  {
+                      "id":  "palmeira-areca",
+                      "src":  "./assets/images/plants/palmeira-areca.jpg",
+                      "title":  "Dypsis lutescens",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Dypsis_lutescens"
+                  },
+                  {
+                      "id":  "peonia",
+                      "src":  "./assets/images/plants/peonia.jpg",
+                      "title":  "Paeonia lactiflora",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Paeonia_lactiflora"
+                  },
+                  {
+                      "id":  "petunia",
+                      "src":  "./assets/images/plants/petunia.jpg",
+                      "title":  "Petunia",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Petunia"
+                  },
+                  {
+                      "id":  "pupila",
+                      "src":  "./assets/images/plants/pupila.jpg",
+                      "title":  "Papaver",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Papaver"
+                  },
+                  {
+                      "id":  "rosa-amarela",
+                      "src":  "./assets/images/plants/rosa-amarela.jpg",
+                      "title":  "Rose",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Rose"
+                  },
+                  {
+                      "id":  "rosa-encarnada",
+                      "src":  "./assets/images/plants/rosa-encarnada.jpg",
+                      "title":  "Rose",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Rose"
+                  },
+                  {
+                      "id":  "rosa-rosa",
+                      "src":  "./assets/images/plants/rosa-rosa.jpg",
+                      "title":  "Rose",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Rose"
+                  },
+                  {
+                      "id":  "tulipas",
+                      "src":  "./assets/images/plants/tulipas.jpg",
+                      "title":  "Tulip",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/Tulip"
+                  },
+                  {
+                      "id":  "violeta-africana",
+                      "src":  "./assets/images/plants/violeta-africana.jpg",
+                      "title":  "African violet",
+                      "credit":  "Wikimedia Commons",
+                      "license":  "",
+                      "source":  "https://en.wikipedia.org/wiki/African_violet"
+                  }
+              ],
+    "Count":  44
+}

@@ -1,0 +1,393 @@
+:root {
+    --color-primary: #66775C;
+    --color-secondary: #A63F5B;
+    --color-blush-light: #F7E2E9;
+    --color-rose-light: #D34E76;
+    --color-neutral-bg: #F3F0EA;
+    --color-white: #FFFDF8;
+    --color-dark: #3E4938;
+    --color-gray-light: #D3CEC1;
+    --color-gray-text: #6F7868;
+    --radius-lg: 12px;
+    --radius-md: 8px;
+    --radius-sm: 5px;
+}
+
+body {
+    background: #E2E6D8;
+    color: var(--color-dark);
+}
+
+.app-container {
+    border: 1px solid #D3CEC1;
+    background: #FFFFFF;
+    box-shadow: 0 12px 36px rgba(62, 73, 56, 0.1);
+}
+
+.app-header,
+.app-header .header-brand-row {
+    background: #66775C;
+}
+
+.app-header {
+    border-color: #7A826F;
+}
+
+.app-header .logo-area,
+.app-header .account-actions > span {
+    color: #FFFFFF;
+}
+
+.app-header .account-avatar-link {
+    border-color: #D34E76;
+    background: #D34E76;
+    color: #FFFFFF;
+}
+
+.logout-button {
+    border-color: #D34E76;
+    background: transparent;
+    color: #FFFFFF;
+}
+
+.nav-links a {
+    border: 1px solid transparent;
+    background: transparent;
+    color: #F7F1ED;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #D34E76;
+    color: #FFFFFF;
+}
+
+.app-content,
+.profile-details > div,
+.profile-photo-wrap,
+.profile-photo-fallback,
+.plant-dialog,
+.empty-state {
+    background: #F3F0EA;
+}
+
+.auth-container {
+    border-color: #7A826F;
+    background: #66775C;
+}
+
+.auth-content {
+    border-color: #D34E76;
+    background: #758567;
+    box-shadow: 0 8px 24px rgba(62, 73, 56, 0.2);
+}
+
+.auth-content > .main-title,
+.auth-form label {
+    color: #FFFFFF;
+}
+
+.auth-intro,
+.auth-note {
+    color: #DDE1D4;
+}
+
+.auth-tabs {
+    background: #66775C;
+}
+
+.auth-tab {
+    color: #F7F1ED;
+}
+
+.auth-tab.active {
+    background: #D34E76;
+    color: #FFFFFF;
+}
+
+.main-title,
+.section-heading h1,
+.section-heading h2,
+.catalog-card h2,
+.stat-card strong,
+.cart-item h2,
+.cart-item > strong,
+.identification-results > h2 {
+    color: #66775C;
+}
+
+.app-content .main-title {
+    color: #D34E76;
+}
+
+.section-subtitle,
+.plant-category,
+.product-price,
+.identification-scientific,
+.profile-details dd {
+    color: #8A9A78;
+}
+
+.hero-card {
+    min-height: 170px;
+    background: #758567;
+}
+
+.hero-card .main-title {
+    color: #FFFFFF;
+}
+
+.hero-card .btn-primary {
+    background: #D34E76;
+    color: #FFFFFF;
+}
+
+.stat-card,
+.stat-card:nth-child(even),
+.cart-item,
+.cart-item:nth-child(even),
+.catalog-card,
+.catalog-card:nth-child(even),
+.my-plant-card,
+.care-entry,
+.profile-card,
+.care-result-card,
+.identification-results li,
+.loader-box {
+    border-color: #D3CEC1;
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(62, 73, 56, 0.05);
+}
+
+.stat-card {
+    grid-template-columns: 1fr;
+}
+
+.stat-card strong {
+    font-family: var(--font-body);
+}
+
+.stat-card > span:last-child,
+.cart-item-info > p,
+.my-plant-details h3,
+.my-plant-details p,
+.plant-meta,
+.care-entry h2,
+.care-entry p,
+.care-entry time,
+.profile-photo-actions h2,
+.profile-photo-actions p,
+.profile-photo-actions small,
+.care-details dd,
+.care-description {
+    color: #5A6353;
+}
+
+.stat-icon,
+.hero-plant,
+.care-entry-icon,
+.plant-avatar {
+    display: none;
+}
+
+.profile-details > div:nth-child(even),
+.empty-state:nth-child(even),
+.compact-empty {
+    background: #F3F0EA;
+}
+
+.identify-form,
+.cart-summary {
+    border-color: #D3CEC1;
+    background: #758567;
+}
+
+.card-payment-fields {
+    border-color: #D34E76;
+    background: #7A826F;
+}
+
+.identify-form > label:not(.photo-picker),
+.identify-consent,
+.checkout-form label,
+.cart-summary > p:first-child,
+.cart-summary strong,
+.checkout-form h2,
+.card-payment-fields legend,
+.card-payment-fields p {
+    color: #FFFFFF;
+}
+
+.photo-picker,
+.btn-secondary,
+.btn-garden,
+.reminder-toggle {
+    border-color: #D34E76;
+    background: #F7E2E9;
+    color: #66775C;
+}
+
+.photo-picker {
+    border-style: solid;
+}
+
+.identify-disclaimer,
+.cart-disclaimer {
+    color: #DDE1D4;
+}
+
+.identify-loading,
+.status-message,
+.auth-status {
+    border-color: #D3CEC1;
+    background: #E8DEDA;
+    color: #66775C;
+}
+
+.status-message.is-error,
+.auth-status.is-error {
+    background: #FCE8E6;
+    color: #8A2C24;
+}
+
+.identification-confidence {
+    color: #66775C;
+}
+
+.search-box,
+.auth-form input,
+.checkout-form input,
+.checkout-form select,
+.identify-form select,
+.plant-dialog input,
+.plant-dialog select {
+    border-color: #BFC5B3;
+    background: #FFFFFF;
+    color: #3E4938;
+}
+
+.search-box input::placeholder,
+.auth-form input::placeholder,
+.checkout-form input::placeholder {
+    color: #7D8675;
+}
+
+.search-box:focus-within,
+.auth-form input:focus,
+.checkout-form input:focus,
+.checkout-form select:focus,
+.identify-form select:focus,
+.plant-dialog input:focus,
+.plant-dialog select:focus {
+    border-color: #D34E76;
+    outline-color: rgba(211, 78, 118, 0.24);
+}
+
+.btn-primary,
+.btn-card {
+    border: 1px solid #D34E76;
+    background: #D34E76;
+    color: #FFFFFF;
+    box-shadow: none;
+}
+
+.btn-primary:hover,
+.btn-card:hover {
+    background: #B83C62;
+}
+
+.favorite-button {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 7px 10px;
+    border: 1px solid #D3CEC1;
+    border-radius: 5px;
+    background: #FFFFFF;
+    color: #66775C;
+    font-size: 12px;
+}
+
+.favorite-button.is-favorite {
+    border-color: #D34E76;
+    background: #D34E76;
+    color: #FFFFFF;
+}
+
+.cart-quantity button {
+    min-width: 0;
+    padding: 6px 9px;
+    border-color: #D3CEC1;
+    border-radius: 5px;
+    background: #F7E2E9;
+    color: #66775C;
+    font-size: 11px;
+}
+
+.cart-quantity {
+    flex-wrap: wrap;
+}
+
+.cart-quantity .cart-remove {
+    padding: 6px 9px;
+    background: #FFFFFF;
+    color: #8A9A78;
+}
+
+.app-footer {
+    border-color: #D3CEC1;
+    background: #F3F0EA;
+    color: #6F7868;
+}
+
+.auth-container .app-footer {
+    border-color: #7A826F;
+    background: #66775C;
+    color: #F7F1ED;
+}
+
+.dialog-close {
+    width: auto;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.profile-photo-fallback {
+    border-radius: 8px;
+    color: #6F7868;
+    font-size: 12px;
+}
+
+@media (min-width: 901px) {
+    .app-header {
+        background: #66775C;
+    }
+}
+
+.auth-container {
+    isolation: isolate;
+}
+
+.auth-container::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: url("../images/auth-background.png") center / cover no-repeat;
+    content: "";
+    opacity: 0.32;
+    pointer-events: none;
+}
+
+.auth-container > .auth-content,
+.auth-container > .app-footer {
+    position: relative;
+    z-index: 1;
+}
+
+.auth-container > .auth-content {
+    background: rgba(117, 133, 103, 0.84);
+}
+
+.auth-container .auth-logo {
+    color: #FFFFFF;
+}

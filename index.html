@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#D34E76">
+    <meta name="description" content="FloraAura: gestão, identificação e cuidados de plantas.">
+    <title>FloraAura</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/palette.css">
+    <script type="module" src="./assets/js/app.js"></script>
+</head>
+<body>
+    <main class="app-container auth-container" id="auth-screen">
+        <div class="auth-content">
+            <a href="./index.html" class="logo-area auth-logo">
+                FloraAura
+            </a>
+            <h1 class="main-title">Acesso à conta</h1>
+            <p class="auth-intro">Entra na tua conta para acompanhar as tuas plantas e os seus cuidados.</p>
+
+            <div class="auth-tabs" role="tablist" aria-label="Acesso à conta">
+                <button class="auth-tab" type="button" id="login-tab" role="tab" aria-controls="login-form" aria-selected="false" data-auth-mode="login">Iniciar sessão</button>
+                <button class="auth-tab active" type="button" id="register-tab" role="tab" aria-controls="register-form" aria-selected="true" data-auth-mode="register">Criar conta</button>
+            </div>
+            <p class="auth-status" id="auth-status" role="status" aria-live="polite" hidden></p>
+
+            <form class="auth-form" id="login-form" data-auth-form="login" hidden>
+                <label for="login-name">Nome</label>
+                <input id="login-name" name="name" type="text" maxlength="60" autocomplete="name" required>
+                <label for="login-email">Email</label>
+                <input id="login-email" name="email" type="email" autocomplete="email" required>
+                <label for="login-password">Password</label>
+                <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+                <button class="btn-primary" type="submit">Iniciar sessão</button>
+            </form>
+
+            <form class="auth-form" id="register-form" data-auth-form="register">
+                <label for="register-name">Nome</label>
+                <input id="register-name" name="name" type="text" maxlength="60" autocomplete="name" required>
+                <label for="register-birthdate">Data de nascimento</label>
+                <input id="register-birthdate" name="birthdate" type="date" autocomplete="bday" required>
+                <label for="register-email">Email</label>
+                <input id="register-email" name="email" type="email" autocomplete="email" required>
+                <label for="register-password">Password <span>(mínimo 8 caracteres)</span></label>
+                <input id="register-password" name="password" type="password" minlength="8" autocomplete="new-password" required>
+                <button class="btn-primary" type="submit">Criar conta</button>
+            </form>
+
+            <p class="auth-note">A conta é protegida pelo Firebase e os dados podem ser sincronizados entre os teus dispositivos.</p>
+        </div>
+        <footer class="app-footer">FloraAura</footer>
+    </main>
+
+    <div class="app-container" id="application-shell" hidden>
+        <header class="app-header">
+            <div class="header-brand-row">
+                <a href="#painel" class="logo-area">
+                    <span>FloraAura</span>
+                </a>
+                <div class="account-actions">
+                    <span id="account-name"></span>
+                    <a class="account-avatar-link" href="#perfil" aria-label="Abrir perfil">
+                        <img id="account-avatar" alt="" hidden>
+                        <span id="account-avatar-fallback">FA</span>
+                    </a>
+                    <button class="logout-button" id="logout-button" type="button">Terminar sessão</button>
+                </div>
+            </div>
+            <nav class="nav-links" aria-label="Navegação principal">
+                <a href="#painel" class="active" aria-current="page">Painel</a>
+                <a href="#catalogo">Catálogo</a>
+                <a href="#carrinho">Carrinho <span class="cart-count" id="cart-count">0</span></a>
+                <a href="#identificar">Identificar</a>
+                <a href="#favoritos">Favoritos <span class="cart-count" id="favorites-count">0</span></a>
+                <a href="#plantas">As minhas plantas</a>
+                <a href="#lembretes">Lembretes</a>
+                <a href="#registos">Registos</a>
+                <a href="#perfil">Perfil</a>
+                <a href="./pages/sobre.html">Sobre</a>
+            </nav>
+        </header>
+
+        <main class="app-content">
+            <p class="status-message" id="app-status" role="status" aria-live="polite"></p>
+
+            <section class="screen" id="painel" data-screen="painel">
+                <div class="hero-card">
+                    <h1 class="main-title">Painel</h1>
+                    <a class="btn-primary" href="#catalogo">Explorar plantas</a>
+                </div>
+
+                <div class="stat-grid" aria-label="Resumo do jardim">
+                    <article class="stat-card">
+                        <strong id="plant-count">0</strong>
+                        <span>plantas no jardim</span>
+                    </article>
+                    <article class="stat-card">
+                        <strong id="care-count">0</strong>
+                        <span>cuidados registados</span>
+                    </article>
+                </div>
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Resumo de plantas</h2>
+                    </div>
+                    <a href="#plantas">Ver plantas</a>
+                </div>
+                <div class="plant-list" id="dashboard-plants"></div>
+            </section>
+
+            <section class="screen" id="catalogo" data-screen="catalogo" hidden>
+                <div class="screen-heading">
+                    <span class="section-subtitle">PLANTAS PARA A TUA CASA E JARDIM</span>
+                    <h1 class="main-title">Catálogo</h1>
+                </div>
+                <label class="search-box">
+                    <span class="visually-hidden">Pesquisar plantas por nome ou espécie</span>
+                    <input id="catalog-search" type="search" placeholder="Pesquisar por nome ou espécie..." autocomplete="off">
+                </label>
+                <p class="catalog-results" id="catalog-results" aria-live="polite"></p>
+                <div class="catalog-grid" id="catalog-grid"></div>
+            </section>
+
+            <section class="screen" id="carrinho" data-screen="carrinho" hidden>
+                <div class="screen-heading">
+                    <span class="section-subtitle">A TUA SELEÇÃO</span>
+                    <h1 class="main-title">Carrinho de compras</h1>
+                </div>
+                <div class="cart-list" id="cart-list"></div>
+                <div class="cart-summary" id="cart-summary" hidden>
+                    <p>Total <strong id="cart-total">0,00 €</strong></p>
+                    <form class="checkout-form" id="checkout-form">
+                        <h2>Envio e pagamento</h2>
+                        <label for="checkout-name">Nome completo</label>
+                        <input id="checkout-name" name="name" type="text" autocomplete="name" required>
+                        <label for="checkout-email">Email</label>
+                        <input id="checkout-email" name="email" type="email" autocomplete="email" required>
+                        <label for="checkout-phone">N.º de telefone</label>
+                        <input id="checkout-phone" name="phone" type="tel" autocomplete="tel" required>
+                        <label for="checkout-address">Morada</label>
+                        <input id="checkout-address" name="address" type="text" autocomplete="street-address" required>
+                        <div class="checkout-address-row">
+                            <div>
+                                <label for="checkout-postal-code">Código postal</label>
+                                <input id="checkout-postal-code" name="postalCode" type="text" autocomplete="postal-code" required>
+                            </div>
+                            <div>
+                                <label for="checkout-locality">Localidade</label>
+                                <input id="checkout-locality" name="locality" type="text" autocomplete="address-level2" required>
+                            </div>
+                        </div>
+                        <label for="payment-method">Método de pagamento</label>
+                        <select id="payment-method" name="paymentMethod" required>
+                            <option value="">Escolhe um método</option>
+                            <option value="apple-pay">Apple Pay</option>
+                            <option value="mb-way">MB WAY</option>
+                            <option value="debit-card">Cartão de débito</option>
+                        </select>
+                        <div id="mbway-phone-field" hidden>
+                            <label for="mbway-phone">N.º de telefone associado ao MB WAY</label>
+                            <input id="mbway-phone" name="mbwayPhone" type="tel" autocomplete="tel">
+                        </div>
+                        <fieldset class="card-payment-fields" id="card-payment-fields" hidden>
+                            <legend>Dados de cartão — simulação</legend>
+                            <p>Usa apenas dados fictícios. Não introduzas os dados de um cartão real.</p>
+                            <label for="cardholder-name">Nome no cartão</label>
+                            <input id="cardholder-name" name="cardholderName" type="text" autocomplete="off">
+                            <label for="card-number">Número do cartão fictício</label>
+                            <input id="card-number" name="cardNumber" type="text" inputmode="numeric" autocomplete="off" placeholder="0000 0000 0000 0000" maxlength="19" pattern="(?:[0-9]{4} ){3}[0-9]{4}">
+                            <div class="checkout-address-row">
+                                <div>
+                                    <label for="card-expiry">Validade (MM/AA)</label>
+                                    <input id="card-expiry" name="cardExpiry" type="text" inputmode="numeric" autocomplete="off" placeholder="MM/AA" maxlength="5" pattern="(0[1-9]|1[0-2])/[0-9]{2}">
+                                </div>
+                                <div>
+                                    <label for="card-security-code">Código de segurança fictício</label>
+                                    <input id="card-security-code" name="cardSecurityCode" type="text" inputmode="numeric" autocomplete="off" placeholder="000" maxlength="4" pattern="[0-9]{3,4}">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <p class="cart-disclaimer">Demonstração: não há pagamento nem envio real. Os dados preenchidos não são guardados nem enviados.</p>
+                        <button class="btn-primary" type="submit">Confirmar encomenda</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="screen" id="identificar" data-screen="identificar" hidden>
+                <div class="screen-heading">
+                    <span class="section-subtitle">CUIDADOS PARA A TUA PLANTA</span>
+                    <h1 class="main-title">Fotografar e consultar</h1>
+                    <p>Tira uma fotografia e recebe sugestões de identificação, incluindo espécies que não constam no catálogo.</p>
+                </div>
+                <form class="identify-form" id="identify-form">
+                    <label class="photo-picker" for="plant-photo">
+                        <strong>Tirar ou escolher fotografia</strong>
+                        <small>Abre a câmara do dispositivo, se disponível</small>
+                    </label>
+                    <input class="visually-hidden" id="plant-photo" type="file" accept="image/*" capture="environment">
+                    <img id="photo-preview" class="photo-preview" alt="Pré-visualização da fotografia da planta" hidden>
+                    <p class="identify-disclaimer">A identificação é feita pelo iNaturalist. A fotografia selecionada só será enviada para esse serviço quando aceitares abaixo. As sugestões podem não estar corretas.</p>
+                    <label class="identify-consent" for="identify-consent">
+                        <input id="identify-consent" type="checkbox" required>
+                        <span>Concordo em enviar esta fotografia ao iNaturalist para tentar identificar a planta.</span>
+                    </label>
+                    <button class="btn-primary" id="identify-button" type="submit">Identificar planta</button>
+                </form>
+                <div class="plant-care-result" id="plant-care-result" aria-live="polite"></div>
+            </section>
+
+            <section class="screen" id="favoritos" data-screen="favoritos" hidden>
+                <div class="screen-heading">
+                    <span class="section-subtitle">AS TUAS ESCOLHAS</span>
+                    <h1 class="main-title">Plantas favoritas</h1>
+                    <p>Lista das plantas marcadas como favoritas.</p>
+                </div>
+                <div class="catalog-grid" id="favorites-grid"></div>
+            </section>
+
+            <section class="screen" id="plantas" data-screen="plantas" hidden>
+                <div class="section-heading">
+                    <div>
+                        <h1 class="main-title">As minhas plantas</h1>
+                    </div>
+                    <button class="btn-secondary" type="button" data-open-add>Adicionar planta</button>
+                </div>
+                <div class="plant-list" id="my-plants"></div>
+            </section>
+
+            <section class="screen" id="lembretes" data-screen="lembretes" hidden>
+                <div class="screen-heading">
+                    <span class="section-subtitle">UM CUIDADO DE CADA VEZ</span>
+                    <h1 class="main-title">Lembretes de rega</h1>
+                </div>
+                <div class="plant-list" id="reminder-list"></div>
+            </section>
+
+            <section class="screen" id="registos" data-screen="registos" hidden>
+                <div class="screen-heading">
+                    <span class="section-subtitle">CUIDAR TAMBÉM É REPARAR</span>
+                    <h1 class="main-title">Registos de cuidados</h1>
+                    <p>Histórico dos cuidados registados às tuas plantas.</p>
+                </div>
+                <div class="care-list" id="care-list"></div>
+            </section>
+
+            <section class="screen" id="perfil" data-screen="perfil" hidden>
+                <div class="screen-heading">
+                    <span class="section-subtitle">A TUA CONTA FLORAAURA</span>
+                    <h1 class="main-title">O meu perfil</h1>
+                    <p>Consulta e atualiza os dados da tua conta.</p>
+                </div>
+                <article class="profile-card">
+                    <div class="profile-photo-wrap">
+                        <img id="profile-photo" class="profile-photo" alt="" hidden>
+                        <span id="profile-photo-fallback" class="profile-photo-fallback">Sem fotografia</span>
+                    </div>
+                    <div class="profile-photo-actions">
+                        <h2 id="profile-name">O teu perfil</h2>
+                        <p>Escolhe uma fotografia para personalizar a tua conta.</p>
+                        <label class="btn-secondary profile-upload" for="profile-photo-input">Escolher fotografia</label>
+                        <input class="visually-hidden" id="profile-photo-input" type="file" accept="image/*">
+                        <button class="profile-remove-button" id="profile-photo-remove" type="button" hidden>Remover fotografia</button>
+                        <small>A imagem é redimensionada e guardada apenas neste dispositivo.</small>
+                    </div>
+                </article>
+                <dl class="profile-details">
+                    <div><dt>Email</dt><dd id="profile-email"></dd></div>
+                    <div><dt>Data de nascimento</dt><dd id="profile-birthdate"></dd></div>
+                </dl>
+            </section>
+        </main>
+
+        <footer class="app-footer">FloraAura · Projeto de Programação · 12.º ano</footer>
+    </div>
+
+    <dialog class="plant-dialog" id="add-plant-dialog">
+        <form id="add-plant-form">
+            <div class="dialog-heading">
+                <div>
+                    <span class="section-subtitle">UM NOVO MEMBRO</span>
+                    <h2>Adicionar planta</h2>
+                </div>
+                <button class="dialog-close" type="button" data-close-dialog>Fechar</button>
+            </div>
+            <label for="plant-name">Nome da planta</label>
+            <input id="plant-name" name="name" type="text" maxlength="50" placeholder="Ex.: A minha Monstera" required>
+            <label for="plant-species">Espécie</label>
+            <input id="plant-species" name="species" type="text" maxlength="60" placeholder="Ex.: Monstera deliciosa">
+            <label for="plant-location">Onde está?</label>
+            <select id="plant-location" name="location">
+                <option value="Sala">Sala</option>
+                <option value="Quarto">Quarto</option>
+                <option value="Cozinha">Cozinha</option>
+                <option value="Varanda">Varanda</option>
+                <option value="Outro">Outro</option>
+            </select>
+            <label for="water-interval">Lembrar de regar a cada (dias)</label>
+            <input id="water-interval" name="waterInterval" type="number" min="1" max="60" value="7" required>
+            <label class="reminder-option" for="reminder-enabled">
+                <input id="reminder-enabled" name="reminderEnabled" type="checkbox" checked>
+                Ativar lembrete de rega
+            </label>
+            <button class="btn-primary" type="submit">Guardar no meu jardim</button>
+        </form>
+    </dialog>
+</body>
+</html>

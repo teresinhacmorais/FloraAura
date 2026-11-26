@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /accounts/{accountId} {
+      allow read, create, update, delete:
+        if request.auth != null && request.auth.uid == accountId;
+    }
+
+    match /plants/{plantId} {
+      allow read, delete:
+        if request.auth != null
+        && resource.data.accountEmail == request.auth.token.email;
+      allow create:
+        if request.auth != null
+        && request.resource.data.accountEmail == request.auth.token.email;
+      allow update:
+        if request.auth != null
+        && resource.data.accountEmail == request.auth.token.email
+        && request.resource.data.accountEmail == request.auth.token.email;
+    }
+
+    match /careLogs/{logId} {
+      allow read, delete:
+        if request.auth != null
+        && resource.data.accountEmail == request.auth.token.email;
+      allow create:
+        if request.auth != null
+        && request.resource.data.accountEmail == request.auth.token.email;
+    }
+
+    match /carts/{email} {
+      allow read, write:
+        if request.auth != null
+        && request.auth.token.email == email;
+    }
+
+    match /favorites/{email} {
+      allow read, write:
+        if request.auth != null
+        && request.auth.token.email == email;
+    }
+  }
+}
